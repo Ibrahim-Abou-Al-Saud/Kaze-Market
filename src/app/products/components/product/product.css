@@ -1,0 +1,26 @@
+.card {
+  transition: all 0.3s ease;
+  border: 1px solid gainsboro;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03); /* lift toward viewer */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* add depth */
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-text {
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.5em;
+  line-height: 1.5em;
+}

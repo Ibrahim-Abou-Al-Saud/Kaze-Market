@@ -1,1 +1,11 @@
-<p>product works!</p>
+<div class="card p-3" style="width: 18rem">
+  <img [src]="prd.image" class="card-img-top" alt="missing_img" height="200px" />
+  <div class="card-body">
+    <h5 class="card-title">{{ prd.title }}</h5>
+    <p class="card-text">{{ prd.description }}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <button class="btn btn-dark">Add to Cart</button>
+      <p class="mb-0 text-primary p-2 rounded-5 bg-danger-subtle">${{ prd.price }}</p>
+    </div>
+  </div>
+</div>

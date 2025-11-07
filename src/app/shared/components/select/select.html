@@ -1,1 +1,16 @@
-<p>select works!</p>
+<div class="container-fluid">
+  <div class="container ms-5 mt-5">
+    <label for="cat" class="form-label fs-5">{{ title }}</label>
+    <select
+      class="form-select form-select-lg w-25"
+      id="cat"
+      [(ngModel)]="selectedCat"
+      (change)="filter()"
+    >
+      <option [value]="'all'" selected>All</option>
+      @for (cat of data; track cat) {
+      <option [value]="cat">{{ cat }}</option>
+      }
+    </select>
+  </div>
+</div>
