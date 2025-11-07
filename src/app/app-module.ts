@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Home } from './home/home';
+import { NotFound } from './not-found/not-found';
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Home,
+    NotFound
   ],
   imports: [
     BrowserModule,
