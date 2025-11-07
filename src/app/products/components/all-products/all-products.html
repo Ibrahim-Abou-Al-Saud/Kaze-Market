@@ -1,1 +1,12 @@
-<p>all-products works!</p>
+<div class="container-fluid">
+  <app-select
+    [title]="'Categories'"
+    [data]="catList"
+    (catChange)="filterProducts($event)"
+  ></app-select>
+  <div class="d-flex flex-wrap justify-content-center gap-5 mt-5 mb-5">
+    @for (prd of filteredList; track prd.id) {
+    <app-product [prd]="prd"></app-product>
+    }
+  </div>
+</div>
