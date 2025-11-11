@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,5 +19,9 @@ export class ProductService {
 
   getProductsByCategory(catName: string) {
     return this._http.get(`${environment.baseUrl}/products/category/${catName}`);
+  }
+
+  getProductById(id: number) {
+    return this._http.get(`${environment.baseUrl}/products/${id}`);
   }
 }

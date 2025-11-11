@@ -1,1 +1,27 @@
-<p>product-details works!</p>
+<p (click)="goBack()" class="back">
+  <i class="bi bi-arrow-left-circle-fill"></i>
+</p>
+<div class="box overflow-hidden container py-4">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-5 col-sm-12 text-center mb-3 mb-md-0">
+      <img [src]="data.image" alt="missing" class="img-fluid" style="max-height: 600px" />
+    </div>
+
+    <div class="col-md-7 col-sm-12 d-flex justify-content-center">
+      <div class="info text-center text-md-start fs-4">
+        <ul class="list-unstyled">
+          <li><strong>Title:</strong> {{ data.title }}</li>
+          <li><strong>Category:</strong> {{ data.Category }}</li>
+          <li><strong>Description:</strong> {{ data.description }}</li>
+          <li><strong>Rate:</strong> {{ data.rating.rate }}</li>
+          <li><strong>Count:</strong> {{ data.rating.count }}</li>
+          <li><strong>Price:</strong> {{ data.rating.price }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center fixed-bottom p-3 ms-5">
+  <button class="btn btn-danger mx-5 fs-4 px-3" (click)="previous()">Prev.</button>
+  <button class="btn btn-success mx-5 fs-4 px-3" (click)="next()">Next</button>
+</div>

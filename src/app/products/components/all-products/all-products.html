@@ -6,7 +6,11 @@
   ></app-select>
   <div class="d-flex flex-wrap justify-content-center gap-5 mt-5 mb-5">
     @for (prd of filteredList; track prd.id) {
-    <app-product [prd]="prd"></app-product>
+    <app-product
+      [prd]="prd"
+      (item)="addToCart($event)"
+      routerLink="/ProductDetails/{{ prd.id }}"
+    ></app-product>
     }
   </div>
 </div>

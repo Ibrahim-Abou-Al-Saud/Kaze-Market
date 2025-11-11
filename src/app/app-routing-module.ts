@@ -4,11 +4,12 @@ import { Home } from './home/home';
 import { NotFound } from './not-found/not-found';
 import { Cart } from './carts/components/cart/cart';
 import { AllProducts } from './products/components/all-products/all-products';
+import { ProductDetails } from './products/components/product-details/product-details';
 
 const routes: Routes = [
   { path: 'Home', component: Home },
   { path: 'Products', component: AllProducts },
-  { path: 'ProductDetails', component: Home },
+  { path: 'ProductDetails/:id', component: ProductDetails },
   { path: 'Carts', component: Cart },
   { path: 'notFound', component: NotFound },
   { path: '', redirectTo: '/Home', pathMatch: 'full' },

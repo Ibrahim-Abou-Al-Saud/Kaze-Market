@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product',
@@ -8,4 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class Product {
   @Input() prd: any = {};
+  @Output() item = new EventEmitter<any>();
+  isAddBtnShow: boolean = false;
+
+  add(count: string) {
+    this.item.emit({ item: this.prd, quantity: count });
+    this.isAddBtnShow = !this.isAddBtnShow;
+  }
 }

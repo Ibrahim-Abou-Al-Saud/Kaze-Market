@@ -12,6 +12,7 @@ export class AllProducts implements OnInit {
   catList: string[] = [];
   filteredList: any[] = [];
   recievedCat: string = 'all';
+  carProducts: any[] = [];
 
   constructor(private _prdService: ProductService) {}
 
@@ -47,6 +48,21 @@ export class AllProducts implements OnInit {
         next: (res: any) => (this.filteredList = res),
         error: (err) => console.log(err),
       });
+    }
+  }
+
+  addToCart(event: any) {
+    if ('cart' in localStorage) {
+      this.carProducts = JSON.parse(localStorage.getItem('cart')!);
+      let exist = this.carProducts.find((item) => item.item.id == event.item.id);
+      if (exist) {
+        alert('You add this product before');
+      }
+      this.carProducts.push(event);
+      localStorage.setItem('cart', JSON.stringify(this.carProducts));
+    } else {
+      this.carProducts.push(event);
+      localStorage.setItem('cart', JSON.stringify(this.carProducts));
     }
   }
 }
