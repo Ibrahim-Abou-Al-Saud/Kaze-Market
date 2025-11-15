@@ -1,8 +1,4 @@
-import {
-  NgModule,
-  provideBrowserGlobalErrorListeners,
-  provideZonelessChangeDetection,
-} from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing-module';
@@ -18,7 +14,6 @@ import { loaderInterceptor } from './shared/interceptors/loader.interceptor-inte
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection(),
     provideHttpClient(withInterceptors([loaderInterceptor])),
   ],
   bootstrap: [App],
