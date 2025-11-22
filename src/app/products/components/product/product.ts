@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProduct } from '../../models/iproduct';
 
 @Component({
   selector: 'app-product',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './product.css',
 })
 export class Product {
-  @Input() prd: any = {};
+  @Input() prd: IProduct = {} as IProduct;
   @Output() item = new EventEmitter<any>();
   isAddBtnShow: boolean = false;
 

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product-service';
 import { Location } from '@angular/common';
 import { LoaderService } from '../../../shared/services/loader.service';
+import { IProduct } from '../../models/iproduct';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ import { LoaderService } from '../../../shared/services/loader.service';
 })
 export class ProductDetails implements OnInit {
   id: any;
-  products: any[] = [];
+  products: IProduct[] = [];
   data: any = {};
   constructor(
     private _activatedRoute: ActivatedRoute,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartsService } from '../../services/carts.service';
 
 @Component({
   selector: 'app-cart',
@@ -9,6 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class Cart implements OnInit {
   cartProducts: any[] = [];
   total: number = 0;
+  sum: number = 0;
+  success: boolean = false;
+  constructor(private cartsService: CartsService) {}
+
   ngOnInit(): void {
     this.getCartProducts();
   }
@@ -24,6 +29,7 @@ export class Cart implements OnInit {
     for (let x in this.cartProducts) {
       this.total += this.cartProducts[x].item.price * this.cartProducts[x].quantity;
     }
+    this.sum = +this.total.toFixed(3) + 5;
   }
 
   plusAmount(index: number) {
@@ -48,6 +54,25 @@ export class Cart implements OnInit {
   clearCart() {
     localStorage.clear();
     this.cartProducts = [];
-    this.total = 0;
+    this.getTotal();
+  }
+
+  detectCahnges() {
+    this.getTotal();
+    localStorage.setItem('cart', JSON.stringify(this.cartProducts));
+  }
+
+  addCart() {
+    let products = this.cartProducts.map((item) => {
+      return { prdId: item.item.id, quantity: item.quantity };
+    });
+    let model = {
+      id: 0,
+      userId: 5,
+      products: products,
+    };
+    this.cartsService.createNewCart(model).subscribe((res) => {
+      this.success = true;
+    });
   }
 }
