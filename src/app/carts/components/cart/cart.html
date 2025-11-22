@@ -1,1 +1,111 @@
-<p>cart works!</p>
+<img src="assets/images/cart.jpg" alt="missing_cart_image" style="width: 100%; height: 200px" />
+<div class="container-fluid">
+  <div class="container py-4">
+    <div class="table-responsive">
+      <h1 class="text-danger">Shopping Cart</h1>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="fs-5">
+          You have <span class="text-danger">{{ cartProducts.length }}</span> item in your cart
+        </p>
+        <button class="btn bg-light text-danger bordered" (click)="clearCart()">
+          Clear Shopping Cart
+        </button>
+      </div>
+      <hr />
+      <table class="table table-align-middle">
+        <thead>
+          <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (prd of cartProducts; track prd.id; let i = $index) {
+          <tr>
+            <th scope="row">
+              <img [src]="prd.item.image" alt="prd_image" style="width: 80px; height: 80px" />
+            </th>
+            <th scope="row">
+              <p class="mt-4">{{ prd.item.title }}</p>
+            </th>
+            <td>
+              <p class="mt-4">${{ prd.item.price }}</p>
+            </td>
+            <td>
+              <div class="input-group quantity py-3" style="width: 100px">
+                <div class="input-group-btn">
+                  <button
+                    class="btn btn-sm btn-minus rounded-circle bg-light border"
+                    (click)="minusAmount(i)"
+                  >
+                    <i class="bi bi-dash fs-5"></i>
+                  </button>
+                </div>
+                <input
+                  type="text"
+                  class="form-control form-control-sm text-center border-0"
+                  value="1"
+                  [(ngModel)]="prd.quantity"
+                />
+                <div class="input-group-btn">
+                  <button
+                    class="btn btn-sm btn-plus rounded-circle bg-light border"
+                    (click)="plusAmount(i)"
+                  >
+                    <i class="bi bi-plus fs-5"></i>
+                  </button>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="mt-4">${{ prd.item.price * prd.quantity }}</p>
+            </td>
+            <td class="py-4">
+              <button class="btn btn-md rounded-circle bg-light border" (click)="deleteProduct(i)">
+                <i class="bi bi-x text-danger fs-5"></i>
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="row g-4 justify-content-end">
+      <div class="col-8"></div>
+      <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
+        <div class="bg-light rounded">
+          <div class="p-4">
+            <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+            <div class="d-flex justify-content-between mb-4">
+              <h5 class="mb-0 me-4">Subtotal:</h5>
+              <p class="mb-0">${{ total }}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <h5 class="mb-0 me-4">Shipping</h5>
+              <div>
+                <p class="mb-0">$5.00</p>
+              </div>
+            </div>
+          </div>
+          <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+            <h5 class="mb-0 ps-4 me-4">Total</h5>
+            <p class="mb-0 pe-4">${{ total + 5 }}</p>
+          </div>
+          <button
+            class="btn btn-primary rounded-pill px-4 py-3 text-uppercase mb-4 ms-4"
+            type="button"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+      <p class="alert alert-success" role="alert">
+        <strong>Well done!</strong> your Order is Successfully Send
+      </p>
+    </div>
+  </div>
+</div>

@@ -56,7 +56,8 @@ export class AllProducts implements OnInit {
       this.carProducts = JSON.parse(localStorage.getItem('cart')!);
       let exist = this.carProducts.find((item) => item.item.id == event.item.id);
       if (exist) {
-        alert('You add this product before');
+        alert('This product is already in your cart.');
+        return;
       }
       this.carProducts.push(event);
       localStorage.setItem('cart', JSON.stringify(this.carProducts));

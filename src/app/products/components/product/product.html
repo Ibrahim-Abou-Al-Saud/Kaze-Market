@@ -10,7 +10,7 @@
       </button>
       } @else {
       <div class="d-flex w-50">
-        <input type="number" #countInp class="fomr-control" min="1" max="10" />
+        <input type="number" #countInp class="fomr-control" value="1" min="1" max="10" />
         <button
           class="btn btn-primary ms-2"
           (click)="add(countInp.value); $event.stopPropagation()"
